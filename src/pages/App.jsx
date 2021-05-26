@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <Navigation />
-      <div className="bg-violet h-screen pt-14">
+      <div className="bg-violet min-h-screen h-full flex flex-col pt-14">
         <Title />
         <Switch>
           <Route exact path="/" component={MainPage} />

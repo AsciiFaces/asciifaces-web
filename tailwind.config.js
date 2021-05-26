@@ -6,11 +6,12 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
+        "3xs": ".5rem",
         xxs: ".65rem",
       },
       fontFamily: {
         pixelated: ['"Press Start 2P"', "cursive"],
-        play: ["Iceland", "cursive"],
+        play: ["Iceland", "monospace"],
       },
       colors: {
         superiority: "var(--superiority)",
