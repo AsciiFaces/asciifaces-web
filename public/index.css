@@ -1,3 +1,35 @@
+:root {
+  --baby-powder: #fcfef6;
+  --corn: #f2e86d;
+  --grey: #d4d4d4;
+  --green: #3bf0a7;
+  --mandarin: #ed7e4b;
+  --superiority: #669bbc;
+  --violet: #453d52;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    font-size: 18px;
+    font-family: "Fira Mono", monospace;
+  }
+
+  p {
+    line-height: 24px;
+  }
+
+  @media (max-width: 1280px) {
+    body {
+      font-size: 14px;
+      line-height: 1.3em;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
