@@ -33,3 +33,11 @@
     box-sizing: border-box;
   }
 }
+
+@layer components {
+  .nav-btn {
+    @apply border bg-grey bg-white px-2 p-1 flex-grow-0 text-xxs font-pixelated ml-6;
+    @apply shadow-superiority transition duration-300;
+    @apply hover:shadow-none hover:transform hover:translate-x-1 hover:translate-y-1;
+  }
+}

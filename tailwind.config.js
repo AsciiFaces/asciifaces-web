@@ -10,6 +10,7 @@ module.exports = {
       },
       fontFamily: {
         pixelated: ['"Press Start 2P"', "cursive"],
+        play: ["Iceland", "cursive"],
       },
       colors: {
         superiority: "var(--superiority)",
