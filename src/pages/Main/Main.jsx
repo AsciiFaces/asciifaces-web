@@ -16,24 +16,24 @@ function MainPage() {
         </p>
       </Card>
       <Card>
-        <CardHeader text="~ Pricing ◕ᴥ◕" />
+        <CardHeader text="~ Pricing" />
         <p>
           There will be 5000 ASCIIFaces minted. They are priced on the following
           curve:
           <br />
           <br />
-          ~ 1 - 1000: 0.05 ETH
+          ~ 1 - 1000: 0.025 ETH
           <br />
-          ~ 1001 - 2000: 0.1 ETH
+          ~ 1001 - 2000: 0.05 ETH
           <br />
-          ~ 2001 - 3000: 0.2 ETH
+          ~ 2001 - 3000: 0.1 ETH
           <br />
-          ~ 3001 - 4000: 0.3 ETH
+          ~ 3001 - 4000: 0.2 ETH
           <br />~ 4001 - 5000: 0.4 ETH
         </p>
       </Card>
       <Card>
-        <CardHeader text="~ About ⊂(ⱺ..ⱺ)つ" />
+        <CardHeader text="~ About" />
         <p>
           The ASCIIPunks grew out of a realization that many of the NFT's we
           trade and collect today are nothing more than tokens with a hardcoded
