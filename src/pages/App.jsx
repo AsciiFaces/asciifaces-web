@@ -2,6 +2,8 @@ import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MainPage from './Main/Main';
+import FacePage from './Faces/Faces';
+
 import NotFound from '../components/NotFound/NotFound';
 import Navigation from '../components/Navigation/Navigation';
 import Title from '../components/Title/Title';
@@ -16,7 +18,7 @@ function App() {
                     <Title />
                     <Switch>
                         <Route exact path="/" component={MainPage} />
-                        <Route exact path="/face" component={MainPage} />
+                        <Route exact path="/faces/:id" component={FacePage} />
                         <Route path="*" component={NotFound} />
                     </Switch>
                 </div>
