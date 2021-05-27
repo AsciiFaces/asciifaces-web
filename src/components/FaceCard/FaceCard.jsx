@@ -1,12 +1,9 @@
 import React from 'react';
-import { useHistory } from 'react-router';
 
 // eslint-disable-next-line react/prop-types
 function FaceCard({ id }) {
-    const history = useHistory();
-
     const handleClick = () => {
-        history.push(`/faces/${id}`);
+        window.open('/faces/' + id, '_blank');
     };
 
     return (

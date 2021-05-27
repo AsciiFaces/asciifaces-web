@@ -6,6 +6,13 @@ import Card from '../../components/Card/Card';
 function FacePage() {
     const { id } = useParams();
 
+    const handleOpensea = () => {
+        window.open(
+            `https://opensea.io/assets/0x7bd29408f11d2bfc23c34f18275bbf23bb716bc7/${id}`,
+            '_blank'
+        );
+    };
+
     return (
         <>
             <Card>
@@ -17,7 +24,7 @@ function FacePage() {
                         alt=""
                     />
                     <h3 className="mb-4">Owned By 0x6761BcAF2b2156C058634D9772F07374D6eDeF1d</h3>
-                    <Button>View on Opensea</Button>
+                    <Button onClick={handleOpensea}>View on Opensea</Button>
                 </div>
             </Card>
         </>

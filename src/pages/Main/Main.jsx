@@ -36,7 +36,7 @@ function MainPage() {
                 </p>
             </Card>
             <Card>
-                <CardHeader text="~ About" />
+                <CardHeader id="about" text="~ About" />
                 <p>
                     The ASCIIPunks grew out of a realization that many of the NFT we trade and
                     collect today are nothing more than tokens with a hardcoded link to a
