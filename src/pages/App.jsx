@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MainPage from './Main/Main';
 import FacePage from './Faces/Faces';
+import InventoryPage from './Inventory/Inventory';
 
 import NotFound from '../components/NotFound/NotFound';
 import Navigation from '../components/Navigation/Navigation';
@@ -19,6 +20,7 @@ function App() {
                     <Switch>
                         <Route exact path="/" component={MainPage} />
                         <Route exact path="/faces/:id" component={FacePage} />
+                        <Route exact path="/inventory" component={InventoryPage} />
                         <Route path="*" component={NotFound} />
                     </Switch>
                 </div>
