@@ -1,6 +1,18 @@
+import { BigNumber } from '@ethersproject/bignumber';
 import React from 'react';
+import useContract from '../../../hooks/useContract';
 
 function MintButton() {
+    const { price } = useContract();
+
+    let priceText;
+
+    if (price.priceWei === BigNumber.from(0)) {
+        priceText = 'Loading';
+    } else {
+        priceText = price.priceEther;
+    }
+
     return (
         <>
             <button className="mint-btn">
@@ -13,7 +25,7 @@ function MintButton() {
                     }}>
                     ASCII FACES
                 </span>{' '}
-                for 0.025 ETH
+                for {priceText}
             </button>
         </>
     );
