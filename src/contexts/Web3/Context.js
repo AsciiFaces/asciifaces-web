@@ -1,9 +1,9 @@
-import React, { createContext } from "react";
+import { createContext } from 'react';
 
 const Web3Context = createContext({
-  handleConnect: () => {},
-  // handleDisconnect: () => {},
-  connected: false,
+    handleConnect: () => {},
+    // handleDisconnect: () => {},
+    connected: false
 });
 
 export default Web3Context;

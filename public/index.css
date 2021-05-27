@@ -1,11 +1,11 @@
 :root {
-  --baby-powder: #fcfef6;
-  --corn: #f2e86d;
-  --grey: #d4d4d4;
-  --green: #3bf0a7;
-  --mandarin: #ed7e4b;
-  --superiority: #669bbc;
-  --violet: #122335;
+    --baby-powder: #fcfef6;
+    --corn: #f2e86d;
+    --grey: #d4d4d4;
+    --green: #3bf0a7;
+    --mandarin: #ed7e4b;
+    --superiority: #669bbc;
+    --violet: #122335;
 }
 
 @tailwind base;
@@ -13,31 +13,31 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    font-size: 18px;
-    font-family: "Fira Mono", monospace;
-  }
-
-  p {
-    line-height: 24px;
-  }
-
-  @media (max-width: 1280px) {
     body {
-      font-size: 14px;
-      line-height: 1.3em;
+        font-size: 18px;
+        font-family: 'Fira Mono', monospace;
     }
-  }
 
-  * {
-    box-sizing: border-box;
-  }
+    p {
+        line-height: 24px;
+    }
+
+    @media (max-width: 1280px) {
+        body {
+            font-size: 14px;
+            line-height: 1.3em;
+        }
+    }
+
+    * {
+        box-sizing: border-box;
+    }
 }
 
 @layer components {
-  .nav-btn {
-    @apply border bg-grey bg-white p-1 sm:p-2 flex-grow-0 text-3xs sm:text-xxs font-pixelated font-semibold ml-4 sm:ml-6 focus:outline-none;
-    @apply shadow-superiority transition duration-300;
-    @apply hover:shadow-none hover:transform hover:translate-x-1 hover:translate-y-1;
-  }
+    .nav-btn {
+        @apply border bg-grey bg-white p-1 sm:p-2 flex-grow-0 text-3xs sm:text-xxs font-pixelated font-semibold ml-4 sm:ml-6 focus:outline-none;
+        @apply shadow-superiority transition duration-300;
+        @apply hover:shadow-none hover:transform hover:translate-x-1 hover:translate-y-1;
+    }
 }
