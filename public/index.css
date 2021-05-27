@@ -46,4 +46,9 @@
         @apply shadow-superiority transition duration-300;
         @apply hover:shadow-none hover:transform hover:translate-x-1 hover:translate-y-1;
     }
+
+    .hover-transition {
+        @apply transition duration-300;
+        @apply hover:shadow-none hover:transform hover:translate-x-1 hover:translate-y-1;
+    }
 }

@@ -22,7 +22,8 @@ module.exports = {
                 violet: 'var(--violet)'
             },
             boxShadow: {
-                superiority: '4px 5px var(--superiority)'
+                superiority: '4px 5px var(--superiority)',
+                mandarin: '4px 5px var(--mandarin)'
             }
         }
     }
