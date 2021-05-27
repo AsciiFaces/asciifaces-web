@@ -17,7 +17,7 @@ function FaceCard({ id }) {
                 alt=""
             />
             <div className="w-full px-3 py-2 bg-white">
-                <span className="text-base">ASCII Faces #{id}</span>
+                <span className="text-base">Faces #{id}</span>
             </div>
         </div>
     );

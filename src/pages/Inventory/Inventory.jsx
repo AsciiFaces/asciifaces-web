@@ -1,61 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import Button from '../../components/Button/Button';
+import React from 'react';
 import Card from '../../components/Card/Card';
 import FaceCard from '../../components/FaceCard/FaceCard';
+import useUserTokens from '../../hooks/useUserTokens';
 
 function InventoryPage() {
-    const totalSupply = 100;
+    const { balance, tokenIds, loading } = useUserTokens();
+    // const { handlePrevPage, handleNextPage, tokenIds } = useTokenPagination(10);
+    console.log(balance, tokenIds, loading);
 
-    const [ids, setIds] = useState([]);
-
-    const rangeFrom = (x) => {
-        const endingId = x + 8;
-
-        return [...Array(totalSupply + 1).keys()].slice(x, endingId);
-    };
-
-    const handleNext = () => {
-        setIds((ids) => {
-            if (ids[ids.length - 1] == totalSupply) return [];
-
-            return rangeFrom(ids[ids.length - 1] + 1);
-        });
-    };
-
-    const handlePrev = () => {
-        setIds((ids) => {
-            if (ids[0] == 1) return rangeFrom(totalSupply - 3);
-
-            return rangeFrom(ids[0] - 8);
-        });
-    };
-
-    useEffect(() => {
-        const startingId = ids[0] === null ? ids[0] : 1;
-        const newIds = rangeFrom(startingId);
-
-        if (!ids[0]) setIds(newIds);
-    }, [ids, totalSupply]);
-
-    return (
-        <>
+    const Loading = () => {
+        return (
             <Card>
                 <div className="flex justify-between">
                     <h3 className="font-semibold text-md sm:text-2xl">My Faces</h3>
                     <h3 className="font-semibold text-md sm:text-2xl">~|◕o◕|~</h3>
-                    <h3 className="font-semibold text-md sm:text-2xl">{totalSupply} Faces</h3>
+                    <h3 className="font-semibold text-md sm:text-2xl">{balance} Faces</h3>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-8 w-full mt-8">
-                    {ids.map((id) => (
+                <div className="flex justify-center w-full mt-12 mb-8">
+                    <h1>Loading...</h1>
+                </div>
+            </Card>
+        );
+    };
+
+    if (loading) return <Loading />;
+
+    return (
+        <Card>
+            <div className="flex justify-between">
+                <h3 className="font-semibold text-md sm:text-2xl">My Faces</h3>
+                <h3 className="font-semibold text-md sm:text-2xl">~|◕o◕|~</h3>
+                <h3 className="font-semibold text-md sm:text-2xl">{balance} Faces</h3>
+            </div>
+            {balance > 0 ? (
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4 lg:gap-8 w-full mt-8">
+                    {tokenIds.map((id) => (
                         <FaceCard id={id} key={id} />
                     ))}
                 </div>
-                <div className="flex m-auto w-1/2 justify-center mt-8">
-                    <Button onClick={handlePrev}>PREV</Button>
-                    <Button onClick={handleNext}>NEXT</Button>
+            ) : (
+                <div className="w-full flex justify-center py-12">
+                    <h1>You do not have any ASCII Faces yet, sorry :(</h1>
                 </div>
-            </Card>
-        </>
+            )}
+        </Card>
     );
 }
 
