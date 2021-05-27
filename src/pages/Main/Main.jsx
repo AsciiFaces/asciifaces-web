@@ -17,8 +17,8 @@ function MainPage() {
                     art.
                 </p>
             </Card>
-            <MintButton />
             <Showcase />
+            <MintButton />
             <Card>
                 <CardHeader text="~ Pricing" />
                 <p>
