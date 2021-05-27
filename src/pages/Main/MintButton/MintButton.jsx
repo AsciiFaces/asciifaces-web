@@ -25,7 +25,7 @@ function MintButton() {
                     }}>
                     ASCII FACES
                 </span>{' '}
-                for {priceText}
+                for {priceText} ETH
             </button>
         </>
     );
