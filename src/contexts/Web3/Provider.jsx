@@ -33,7 +33,7 @@ function Web3Provider({ children }) {
                 await handleDisconnect();
             }
         },
-        [setWalletAddress, setWallet, web3Modal, setConnected]
+        [web3Modal, handleDisconnect]
     );
 
     const handleDisconnect = useCallback(async () => {
@@ -64,7 +64,7 @@ function Web3Provider({ children }) {
         }
 
         initWeb3Modal();
-    }, [setWeb3Modal, web3Modal]);
+    }, [handleConnect, setWeb3Modal, web3Modal]);
 
     return (
         <Web3Context.Provider
