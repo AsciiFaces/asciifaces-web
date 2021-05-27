@@ -1,28 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../../../components/Button/Button';
 import Card from '../../../components/Card/Card';
 import FaceCard from '../../../components/FaceCard/FaceCard';
 
 function Showcase() {
+    const totalSupply = 100;
+
+    const [ids, setIds] = useState([]);
+
+    const rangeFrom = (x) => {
+        const endingId = x + 8;
+
+        return [...Array(totalSupply + 1).keys()].slice(x, endingId);
+    };
+
+    const handleNext = () => {
+        setIds((ids) => {
+            if (ids[ids.length - 1] == totalSupply) return [];
+
+            return rangeFrom(ids[ids.length - 1] + 1);
+        });
+    };
+
+    const handlePrev = () => {
+        setIds((ids) => {
+            if (ids[0] == 1) return rangeFrom(totalSupply - 3);
+
+            return rangeFrom(ids[0] - 8);
+        });
+    };
+
+    useEffect(() => {
+        const startingId = ids[0] === null ? ids[0] : 1;
+        const newIds = rangeFrom(startingId);
+
+        if (!ids[0]) setIds(newIds);
+    }, [ids, totalSupply]);
+
+    // useEffect(() => {
+    //     const keys = [...Array(totalSupply).keys()];
+    //     keys.forEach((id) => {
+    //         const img = new Image();
+    //         img.src = `http://localhost:3000/faces/${id}/image.svg`;
+    //     });
+    // }, []);
+
     return (
         <Card>
             <div className="flex justify-between">
                 <h3 className="font-semibold text-xl">Showcase</h3>
-                <h3 className="font-semibold text-xl">1 / 5000 Minted</h3>
+                <h3 className="font-semibold text-xl">{totalSupply} / 5000 Minted</h3>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-8 w-full mt-8">
-                <FaceCard id="1" />
-                <FaceCard id="2" />
-                <FaceCard id="3" />
-                <FaceCard id="4" />
-                <FaceCard id="5" />
-                <FaceCard id="6" />
-                <FaceCard id="7" />
-                <FaceCard id="8" />
+                {ids.map((id) => (
+                    <FaceCard id={id} key={id} />
+                ))}
             </div>
             <div className="flex m-auto w-1/2 justify-center mt-8">
-                <Button>PREV</Button>
-                <Button>NEXT</Button>
+                <Button onClick={handlePrev}>PREV</Button>
+                <Button onClick={handleNext}>NEXT</Button>
             </div>
         </Card>
     );

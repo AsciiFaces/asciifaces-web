@@ -51,4 +51,9 @@
         @apply transition duration-300;
         @apply hover:shadow-none hover:transform hover:translate-x-1 hover:translate-y-1;
     }
+
+    .focus-transition {
+        @apply transition duration-300;
+        @apply focus-visible:shadow-none focus-visible:transform focus-visible:translate-x-1 focus-visible:translate-y-1;
+    }
 }
