@@ -56,6 +56,7 @@ function MainPage() {
                     crypto head, this is the project for you.
                 </p>
             </Card>
+            <MintButton />
         </>
     );
 }
