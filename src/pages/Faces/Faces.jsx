@@ -2,9 +2,15 @@ import React from 'react';
 import { useParams } from 'react-router';
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
+import useContract from '../../hooks/useContract';
+import useFetchOwner from '../../hooks/useFetchOwner';
 
 function FacePage() {
     const { id } = useParams();
+
+    const { totalSupply } = useContract();
+
+    const { loading, owner } = useFetchOwner(id);
 
     const handleOpensea = () => {
         window.open(
@@ -12,6 +18,10 @@ function FacePage() {
             '_blank'
         );
     };
+
+    if (Number(id) > totalSupply || Number(id) <= 0) {
+        return null;
+    }
 
     return (
         <>
@@ -23,7 +33,7 @@ function FacePage() {
                         src={`http://localhost:3000/faces/${id}/image.svg`}
                         alt=""
                     />
-                    <h3 className="mb-4">Owned By 0x6761BcAF2b2156C058634D9772F07374D6eDeF1d</h3>
+                    <h3 className="mb-4">Owned By {loading ? 'Loading...' : owner}</h3>
                     <Button onClick={handleOpensea}>View on Opensea</Button>
                 </div>
             </Card>
