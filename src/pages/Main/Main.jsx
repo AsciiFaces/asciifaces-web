@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../../components/Card/Card';
 import CardHeader from '../../components/CardHeader/CardHeader';
+import MintButton from '../../components/MintButton/MintButton';
 
 function MainPage() {
     return (
@@ -15,6 +16,7 @@ function MainPage() {
                     the art.
                 </p>
             </Card>
+            <MintButton />
             <Card>
                 <CardHeader text="~ Pricing" />
                 <p>

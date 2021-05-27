@@ -2,7 +2,7 @@ import { createContext } from 'react';
 
 const Web3Context = createContext({
     handleConnect: () => {},
-    // handleDisconnect: () => {},
+    handleDisconnect: () => {},
     connected: false
 });
 
