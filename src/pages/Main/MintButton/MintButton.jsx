@@ -23,9 +23,10 @@ const customStyles = {
 };
 
 function MintButton() {
-    const { price } = useContract();
-    const { connected, handleConnect } = useWeb3();
+    const { price, contract } = useContract();
+    const { connected, handleConnect, wallet } = useWeb3();
     const [modalOpen, setModalOpen] = useState(false);
+    const [mintLoading, setMintLoading] = useState(false);
     const { weth, eth } = useBalance();
     const { allowance, approve, loading } = useAllowance();
 
@@ -47,11 +48,21 @@ function MintButton() {
         if (Number(formatEther(allowance)) < 1000) {
             console.log('increase allowance');
             await approve();
+            return;
         }
+
+        setMintLoading(true);
+        try {
+            await contract.connect(wallet).createFace(1232);
+        } catch (e) {
+            console.log(e);
+            setMintLoading(false);
+        }
+        setMintLoading(false);
     };
 
     const mintButton = () => {
-        if (loading) {
+        if (loading || mintLoading) {
             return 'Loading ...';
         }
         if (Number(formatEther(allowance)) < 1000) {
