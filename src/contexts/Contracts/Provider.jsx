@@ -1,7 +1,7 @@
 import { BigNumber, ethers } from 'ethers';
 import React, { useCallback, useEffect, useState } from 'react';
 import ContractContext from './Context';
-import AsciiFaces from '../../abis/AsciiFaces.json';
+import AsciiFaces from '../../abis/AsciiFaces';
 
 // eslint-disable-next-line react/prop-types
 function ContractProvider({ children }) {
