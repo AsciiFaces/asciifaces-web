@@ -66,7 +66,7 @@ function Web3Provider({ children }) {
                     setWeb3Modal(web3Modal);
                 }
 
-                // handleConnect();
+                handleConnect();
             } catch (err) {
                 console.log(err);
             }

@@ -1,7 +1,9 @@
 import { BigNumber } from '@ethersproject/bignumber';
+import { formatEther } from '@ethersproject/units';
 import React, { useState } from 'react';
 import ReactModal from 'react-modal';
 import Button from '../../../components/Button/Button';
+import useBalance from '../../../hooks/useBalance';
 import useContract from '../../../hooks/useContract';
 import useWeb3 from '../../../hooks/useWeb3';
 
@@ -23,6 +25,7 @@ function MintButton() {
     const { price } = useContract();
     const { connected, handleConnect } = useWeb3();
     const [modalOpen, setModalOpen] = useState(false);
+    const { weth, eth } = useBalance();
 
     let priceText;
 
@@ -64,8 +67,8 @@ function MintButton() {
                 </div>
                 <div className="flex mt-4 justify-between">
                     <div>
-                        <h1>Balance (Mainnet): 0.1 ETH</h1>
-                        <h1>Balance (Matic) : 0.1 ETH</h1>
+                        <h1>Balance (Mainnet): {formatEther(eth)} ETH</h1>
+                        <h1>Balance (Matic) : {formatEther(weth)} ETH</h1>
                     </div>
                     <div>
                         <button
