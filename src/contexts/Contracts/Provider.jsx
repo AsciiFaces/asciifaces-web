@@ -38,10 +38,13 @@ function ContractProvider({ children }) {
     }, [fetchSupply, fetchPrice]);
 
     useEffect(() => {
+        const RPC_URL = import.meta.env.SNOWPACK_PUBLIC_MATIC_RPC;
+        const CONTRACT_ADDRESS = import.meta.env.SNOWPACK_PUBLIC_CONTRACT_ADDRESS;
+
         const contract = new ethers.Contract(
-            '0xee85d401835561De62b874147Eca8A4Fe1D5cBFf',
+            CONTRACT_ADDRESS,
             AsciiFaces.abi,
-            new ethers.providers.JsonRpcProvider('http://localhost:8545')
+            new ethers.providers.JsonRpcProvider(RPC_URL)
         );
 
         setContract(contract);
