@@ -4,7 +4,7 @@ export default {
         public: '/',
         src: '/dist'
     },
-    plugins: ['@snowpack/plugin-postcss'],
+    plugins: ['@snowpack/plugin-postcss', '@snowpack/plugin-dotenv'],
     routes: [
         /* Enable an SPA Fallback in development: */
         { match: 'routes', src: '.*', dest: '/index.html' }
