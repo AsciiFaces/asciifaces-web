@@ -21,7 +21,6 @@ function Web3Provider({ children }) {
 
     const handleConnect = useCallback(
         async function () {
-            await web3Modal?.clearCachedProvider();
             const provider = await web3Modal?.connect();
 
             if (provider) {

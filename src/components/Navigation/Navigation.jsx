@@ -15,7 +15,7 @@ function Navigation() {
     };
 
     return (
-        <div className="absolute flex h-14 justify-between items-center w-full z-50 px-8 sm:mt-2">
+        <div className="absolute flex h-14 justify-between items-center w-full px-8 sm:mt-2">
             <div className="flex-grow"></div>
             <button onClick={() => openInternal('/#about')} className="nav-btn">
                 About
