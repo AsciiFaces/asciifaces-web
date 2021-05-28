@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import Web3Modal from 'web3modal';
+import Fortmatic from 'fortmatic';
 import Web3Context from './Context.js';
 
 // eslint-disable-next-line react/prop-types
@@ -20,6 +21,7 @@ function Web3Provider({ children }) {
 
     const handleConnect = useCallback(
         async function () {
+            await web3Modal?.clearCachedProvider();
             const provider = await web3Modal?.connect();
 
             if (provider) {
@@ -47,12 +49,19 @@ function Web3Provider({ children }) {
         async function initWeb3Modal() {
             try {
                 if (!web3Modal) {
-                    const providerOptions = {};
+                    const providerOptions = {
+                        fortmatic: {
+                            package: Fortmatic, // required
+                            options: {
+                                key: 'pk_test_FE1FA464E5B0A64B' // required
+                            }
+                        }
+                    };
 
                     const web3Modal = new Web3Modal({
+                        theme: 'dark',
                         cacheProvider: true,
-                        providerOptions,
-                        theme: 'dark'
+                        providerOptions
                     });
 
                     setWeb3Modal(web3Modal);

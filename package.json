@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "ethers": "^5.2.0",
+        "fortmatic": "^2.2.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-modal": "^3.13.1",

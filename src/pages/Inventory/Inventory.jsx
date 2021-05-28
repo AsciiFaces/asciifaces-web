@@ -1,9 +1,12 @@
 import React from 'react';
+import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
 import FaceCard from '../../components/FaceCard/FaceCard';
 import useUserTokens from '../../hooks/useUserTokens';
+import useWeb3 from '../../hooks/useWeb3';
 
 function InventoryPage() {
+    const { connected, handleConnect } = useWeb3();
     const { balance, tokenIds, loading } = useUserTokens();
     // const { handlePrevPage, handleNextPage, tokenIds } = useTokenPagination(10);
     console.log(balance, tokenIds, loading);
@@ -22,6 +25,23 @@ function InventoryPage() {
             </Card>
         );
     };
+
+    const NotConnected = () => {
+        return (
+            <Card>
+                <div className="flex justify-between">
+                    <h3 className="font-semibold text-md sm:text-2xl">My Faces</h3>
+                    <h3 className="font-semibold text-md sm:text-2xl">~|◕o◕|~</h3>
+                    <h3 className="font-semibold text-md sm:text-2xl">{balance} Faces</h3>
+                </div>
+                <div className="flex justify-center w-full mt-12 mb-8">
+                    <Button onClick={handleConnect}>Connect Wallet</Button>
+                </div>
+            </Card>
+        );
+    };
+
+    if (!connected) return <NotConnected />;
 
     if (loading) return <Loading />;
 
