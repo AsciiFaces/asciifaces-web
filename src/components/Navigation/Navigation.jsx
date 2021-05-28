@@ -29,7 +29,7 @@ function Navigation() {
                 Opensea
             </button>
             <button className="nav-btn" onClick={handleConnect}>
-                {connected ? '✓ Connected' : 'Connect'}
+                {connected ? 'Connected' : 'Connect'}
             </button>
         </div>
     );
