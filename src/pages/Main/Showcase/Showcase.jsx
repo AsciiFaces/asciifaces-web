@@ -11,7 +11,23 @@ function Showcase() {
 
     const { handleNextPage, handlePrevPage, tokenIds } = useTokenPagination(totalSupply);
 
-    if (totalSupply <= 0) return null;
+    const Loading = () => {
+        return (
+            <Card>
+                <div className="flex justify-between">
+                    <h3 className="font-semibold text-xl">Showcase</h3>
+                    <h3 className="font-semibold text-xl">
+                        {totalSupply} / {tokenLimit} Minted
+                    </h3>
+                </div>
+                <div className="w-full flex justify-center">
+                    <h2>Loading...</h2>
+                </div>
+            </Card>
+        );
+    };
+
+    if (totalSupply <= 0) return <Loading />;
 
     return (
         <Card>

@@ -12,7 +12,9 @@ function FaceCard({ id }) {
             onClick={handleClick}
             className="bg-white border border-grey shadow-mandarin hover-transition cursor-pointer">
             <img
-                // className="w-full h-5/6 bg-red-600 relative"
+                className="bg-black"
+                height="350px"
+                width="350px"
                 src={`http://localhost:3000/faces/${id}/image.svg`}
                 alt=""
             />
