@@ -2,7 +2,7 @@
     "scripts": {
         "dev": "snowpack dev",
         "build": "snowpack build",
-        "serve": "serve --no-clipboard --listen 3000 build",
+        "serve": "serve --no-clipboard --listen 8080 build",
         "lint": "eslint --fix .",
         "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
     },
