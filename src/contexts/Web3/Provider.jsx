@@ -59,6 +59,7 @@ function Web3Provider({ children }) {
 
                     const web3Modal = new Web3Modal({
                         theme: 'dark',
+                        network: 'ropsten',
                         cacheProvider: true,
                         providerOptions
                     });

@@ -3,6 +3,7 @@ import { formatEther } from '@ethersproject/units';
 import React, { useState } from 'react';
 import ReactModal from 'react-modal';
 import Button from '../../../components/Button/Button';
+import useAllowance from '../../../hooks/useAllowance';
 import useBalance from '../../../hooks/useBalance';
 import useContract from '../../../hooks/useContract';
 import useWeb3 from '../../../hooks/useWeb3';
@@ -26,6 +27,7 @@ function MintButton() {
     const { connected, handleConnect } = useWeb3();
     const [modalOpen, setModalOpen] = useState(false);
     const { weth, eth } = useBalance();
+    const { allowance, approve, loading } = useAllowance();
 
     let priceText;
 
@@ -35,15 +37,32 @@ function MintButton() {
         priceText = price.priceEther;
     }
 
-    const handleClick = () => {
+    const handleOpen = () => {
         if (!connected) return handleConnect();
 
         setModalOpen(true);
     };
 
+    const handleMint = async () => {
+        if (Number(formatEther(allowance)) < 1000) {
+            console.log('increase allowance');
+            await approve();
+        }
+    };
+
+    const mintButton = () => {
+        if (loading) {
+            return 'Loading ...';
+        }
+        if (Number(formatEther(allowance)) < 1000) {
+            return 'Approve';
+        }
+        return 'Proceed';
+    };
+
     return (
         <>
-            <button className="mint-btn" onClick={handleClick}>
+            <button className="mint-btn" onClick={handleOpen}>
                 {connected ? `Mint 1 ASCII Faces for ${priceText} ETH` : 'Please connect to wallet'}
             </button>
             <ReactModal
@@ -81,7 +100,9 @@ function MintButton() {
                     </div>
                 </div>
                 <div className="flex mt-5">
-                    <Button>{'Proceed'}</Button>
+                    <Button disabled={loading} onClick={handleMint}>
+                        {mintButton()}
+                    </Button>
                 </div>
             </ReactModal>
         </>

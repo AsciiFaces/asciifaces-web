@@ -58,7 +58,7 @@ function ContractProvider({ children }) {
         const contract = new ethers.Contract(CONTRACT_ADDRESS, AsciiFaces.abi, provider);
 
         const WETH = new ethers.Contract(
-            '0x2d7882bedcbfddce29ba99965dd3cdf7fcb10a1e',
+            '0xe71D9293875FE4bd44b4E897E057b467c4c2A361',
             ERC20ABI,
             provider
         );
@@ -74,7 +74,7 @@ function ContractProvider({ children }) {
 
     return (
         <ContractContext.Provider
-            value={{ totalSupply, tokenLimit, contract, price, fetchWethBalance }}>
+            value={{ totalSupply, tokenLimit, contract, price, fetchWethBalance, wethContract }}>
             {children}
         </ContractContext.Provider>
     );
